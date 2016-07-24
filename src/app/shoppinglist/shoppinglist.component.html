@@ -1,0 +1,65 @@
+<hr>
+<tr>
+  <td><h1>購物車清單</h1></td>
+  <td><button (click)="OnDelete()">清空購物車</button></td>
+  <td><button (click)="Onback()">復原變更</button></td>
+<hr>
+</tr>
+<hr>
+<table class="table">
+    <tr>
+      <th>#</th>
+      <th>產品名稱</th>
+      <th>產品價格</th>
+      <th>購買數量</th>
+      <th>小計</th>
+      <th>刪除</th>
+    </tr>
+    <tr *ngFor="let item of shoppingcartService.itemlist; let i = index">
+      <td>
+          <div>
+          {{ i+1 }}
+          </div>
+      </td>
+      <td>
+          <div>
+          {{ item.productname }}
+          </div>
+      </td>
+      <td>
+         <div>
+         {{ item.productprice }}
+        </div>
+      </td>
+      <td>
+        <div *ngIf="!item.isEdit" (click)="edit(item)"> {{ item.productamount }} </div>
+        <div *ngIf="item.isEdit">
+          <input type="number" [(ngModel)]= "item.Qty2">
+          <button (click)="ok(item)">V</button>
+          <button (click)="reset(item)">X</button>
+        </div>
+      </td>
+      <td>
+        {{ Oncacular(item.productprice,item.productamount) }}
+     </td>
+     <td>
+        <button (click)="Onmodify(i)">X</button>
+    </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>稅金(5%)</td>
+        <td>$ {{ Sum() }}</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>總計金額</td>
+        <td>$ {{ total() }}</td>
+   </tr>
+</table>
+
+

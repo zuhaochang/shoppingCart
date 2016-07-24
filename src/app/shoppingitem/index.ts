@@ -1,0 +1,1 @@
+export * from './shoppingitem.component';

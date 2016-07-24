@@ -1,0 +1,17 @@
+<form>
+  <p><label>產品名稱:</label>
+  <input type = "text" [(ngModel)]="product.name">
+  </p>
+  <p>
+  <label>產品價格:</label>
+   <input type = number [(ngModel)]="product.price">
+  </p>
+  <label>購買數量:</label>
+   <input type = number [(ngModel)]="product.amount">
+
+</form>
+<p>{{ product.name }} {{ product.price }} ^ {{ product.amount }} = $ {{ Oncacular(product.price,product.amount) }}</p>
+<button (click)="Onsubmit()">加入購物車</button>
+<ui>
+<app-shoppinglist></app-shoppinglist>
+</ui>
