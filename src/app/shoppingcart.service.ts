@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class ShoppingcartService {
   itemlist;
+  //private shopcart = new Shopcart();
+  //private logs: Shopcart[] = [];
   constructor() {
     this.itemlist=[
     {productname:"BMW",productprice:"1000000",productamount:"1",littlecount:"1000000",isEdit:false},
@@ -10,10 +12,13 @@ export class ShoppingcartService {
     ]
 
   }
-  addItem(itemlist){
+  Additem(itemlist){
       this.itemlist.push(itemlist);
     }
   Caculate(price,amount){
     return price * amount;
+  }
+  modify(index){
+    this.itemlist.splice(index,1);
   }
 }

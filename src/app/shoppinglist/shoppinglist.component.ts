@@ -13,17 +13,17 @@ export class ShoppinglistComponent implements OnInit {
 
   ngOnInit() {
   }
-  OnDelete(){
+  OnClear(){
      this.shoppingcartService.itemlist= [];
   }
   Onback(){
 
   }
-   Oncacular(price,amount){
+  Oncacular(price,amount){
     return this.shoppingcartService.Caculate(price,amount);
   }
   Onmodify(index){
-    this.shoppingcartService.itemlist.splice(index, 1);
+    this.shoppingcartService.modify(index);
   }
  Sum(){
     var result = 0;

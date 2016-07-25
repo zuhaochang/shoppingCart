@@ -30,6 +30,6 @@ export class ShoppingitemComponent implements OnInit {
     this.itemlist.productname = this.product.name;
     this.itemlist.productprice = this.product.price;
     this.itemlist.productamount = this.product.amount;
-    this.shoppingcartService.addItem(this.itemlist);
+    this.shoppingcartService.Additem(this.itemlist);
   }
 }
