@@ -10,16 +10,16 @@ import { Product } from '../product';
   directives : [ShoppinglistComponent]
 })
 export class ShoppingitemComponent implements OnInit {
-  //private product: Product;
-  private product: any = {
+
+  private item: any = {
     name: "BMW",
     price: 1000000,
     amount: 5
     };
-  private itemlist;
+  private itemlist: Product;
 
   constructor(private shoppingcartService:ShoppingcartService = null) {
-    this.itemlist={productname:"",productprice:"",productamount:"",littlecount:"",isEdit:false}
+
   }
 
   ngOnInit() {
@@ -28,9 +28,10 @@ export class ShoppingitemComponent implements OnInit {
     return this.shoppingcartService.Caculate(price,amount);
   }
   Onsubmit(){
-    this.itemlist.productname = this.product.name;
-    this.itemlist.productprice = this.product.price;
-    this.itemlist.productamount = this.product.amount;
+    this.itemlist=new Product();
+    this.itemlist.name = this.item.name;
+    this.itemlist.price = this.item.price;
+    this.itemlist.amount = this.item.amount;
     this.shoppingcartService.Additem(this.itemlist);
   }
 }

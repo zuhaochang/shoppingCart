@@ -1,7 +1,7 @@
 <hr>
 <tr>
   <td><h1>購物車清單</h1></td>
-  <td><button (click)="Onclear()">清空購物車</button></td>
+  <td><button (click)="OnClear()">清空購物車</button></td>
   <td><button (click)="Onback()">復原變更</button></td>
 <hr>
 </tr>
@@ -23,16 +23,16 @@
       </td>
       <td>
           <div>
-          {{ item.productname }}
+          {{ item.name }}
           </div>
       </td>
       <td>
          <div>
-         {{ item.productprice }}
+         {{ item.price }}
         </div>
       </td>
       <td>
-        <div *ngIf="!item.isEdit" (click)="Edit(item)"> {{ item.productamount }} </div>
+        <div *ngIf="!item.isEdit" (click)="Edit(item)"> {{ item.amount }} </div>
         <div *ngIf="item.isEdit">
           <input type="number" [(ngModel)]= "item.Qty2">
           <button (click)="Ok(item)">V</button>
@@ -40,7 +40,7 @@
         </div>
       </td>
       <td>
-        {{ Oncacular(item.productprice,item.productamount) }}
+        {{ Oncacular(item.price,item.amount) }}
      </td>
      <td>
         <button (click)="Onmodify(i)">X</button>
