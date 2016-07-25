@@ -23,9 +23,9 @@ export class ShoppinglistComponent implements OnInit {
     return this.shoppingcartService.Caculate(price,amount);
   }
   Onmodify(index){
-    this.shoppingcartService.modify(index);
+    this.shoppingcartService.Modify(index);
   }
- Sum(){
+  Sum(){
     var result = 0;
     for(var i = 0; i < this.shoppingcartService.itemlist.length ; i++){
       result +=
@@ -33,7 +33,7 @@ export class ShoppinglistComponent implements OnInit {
     }
     return result*0.05;
   }
-total(){
+  Total(){
   var result1 = 0;
     for(var i = 0; i < this.shoppingcartService.itemlist.length ; i++){
       result1 +=
@@ -41,15 +41,15 @@ total(){
     }
     return result1 + this.Sum();
   }
-edit(item){
+  Edit(item){
     item.isEdit=true;
     item.Qty2 = item.productamount;
 }
-ok(item){
+  Ok(item){
     item.productamount = item.Qty2;
     item.isEdit = false;
 }
-reset(item){
+  Reset(item){
 
     item.isEdit = false;
 }
