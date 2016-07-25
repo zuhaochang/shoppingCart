@@ -1,13 +1,16 @@
 import { Injectable } from '@angular/core';
-
+import { Product } from './product';
 @Injectable()
 export class ShoppingcartService {
   itemlist;
-  private currentlist: any [] = [];
+  public productList: Array<Product> = [
+    new Product("BMW",1000000,1,false),
+    new Product("FIAT",1800000,2,false)
+  ];
   constructor() {
     this.itemlist=[
-    {productname:"BMW",productprice:"1000000",productamount:"1",littlecount:"1000000",isEdit:false},
-    {productname:"FIAT",productprice:"1800000",productamount:"2",littlecount:"3600000",isEdit:false}
+    {productname:"BMW",productprice:"1000000",productamount:"1",isEdit:false},
+    {productname:"FIAT",productprice:"1800000",productamount:"2",isEdit:false}
     ]
 
   }

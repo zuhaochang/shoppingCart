@@ -1,6 +1,7 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ShoppinglistComponent } from '../shoppinglist';
 import { ShoppingcartService } from '../shoppingcart.service';
+import { Product } from '../product';
 @Component({
   moduleId: module.id,
   selector: 'app-shoppingitem',
@@ -9,7 +10,7 @@ import { ShoppingcartService } from '../shoppingcart.service';
   directives : [ShoppinglistComponent]
 })
 export class ShoppingitemComponent implements OnInit {
-  @Input()
+  //private product: Product;
   private product: any = {
     name: "BMW",
     price: 1000000,
