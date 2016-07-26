@@ -6,7 +6,5 @@ export class Product {
         public isEdit: boolean =false) {
 
     }
-    toString() {
-        return this.name + ' | ' + this.price + ' ^ ' + this.amount;
-    }
+
 }

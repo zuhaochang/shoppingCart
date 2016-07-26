@@ -4,10 +4,10 @@
   </p>
   <p>
   <label>產品價格:</label>
-   <input type = number [(ngModel)]="item.price">
+   <input type = number min = 0 [(ngModel)]="item.price">
   </p>
   <label>購買數量:</label>
-   <input type = number [(ngModel)]="item.amount">
+   <input type = number min = 0 [(ngModel)]="item.amount">
 
 </form>
 <p>{{ item.name }} {{ item.price }} ^ {{ item.amount }} = $ {{ Oncacular(item.price,item.amount) }}</p>

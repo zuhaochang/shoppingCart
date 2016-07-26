@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Product } from './product';
 @Injectable()
 export class ShoppingcartService {
-  private stepList: any[] = [];
+  private stepLog: Array<Product[]>;
   public itemlist: Product[] = [
     new Product("BMW",1000000,1,false),
     new Product("FIAT",1800000,2,false)
@@ -19,14 +19,12 @@ export class ShoppingcartService {
     this.itemlist.splice(index,1);
   }
   Currentlog(){
-    /*var stepLog: Array<Product> = this.itemlist.slice();
-    this.stepList.push(stepLog);*/
-    //console.log(this.stepList);
+
+    this.stepLog.push(this.itemlist);
   }
   Undo(){
-    /*if(this.stepList.length > 0) {
-      console.log(this.stepList);
-      this.itemlist = this.stepList.pop().slice();
-    }*/
+     if(this.itemlist.length > 0) {
+      this.itemlist = this.stepLog.pop();
+    }
   }
 }
