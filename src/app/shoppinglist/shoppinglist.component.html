@@ -35,7 +35,7 @@
         <div *ngIf="!item.isEdit" (click)="Edit(item)"> {{ item.amount }} </div>
         <div *ngIf="item.isEdit">
           <input type = number min= 0 [(ngModel)]= "item.Qty2">
-          <button (click)="Ok(item)">V</button>
+          <button (click)="Ok(item,i)">V</button>
           <button (click)="Reset(item)">X</button>
         </div>
       </td>

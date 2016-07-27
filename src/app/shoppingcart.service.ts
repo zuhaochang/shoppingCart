@@ -13,13 +13,13 @@ export class ShoppingcartService {
       this.itemlist.push(itemlist);
   }//新增項目
   Caculate(price,amount){
-    return price * amount;
+    return (price * amount);
   }//小計
   Modify(index){
     this.itemlist.splice(index,1);
   }//單筆刪除
   Currentlog(itemlist){
-     this.stepLog.push([...this.itemlist]);
+     this.stepLog.push([...this.itemlist]);//spread operator
      //console.log(this.stepLog);
   }//丟入值到當前陣列中，必須放置於相關動作的第一行先存入
   Undo(){

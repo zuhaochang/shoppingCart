@@ -29,30 +29,32 @@ export class ShoppinglistComponent implements OnInit {
     this.shoppingcartService.Modify(index);
   }
   Sum(){
-    var result = 0;
+    var tax = 0;
+    for(var i = 0; i < this.shoppingcartService.itemlist.length ; i++){
+      tax +=
+        this.Oncacular(this.shoppingcartService.itemlist[i].price,this.shoppingcartService.itemlist[i].amount);
+    }
+    return Math.ceil(tax*0.05);
+  }
+  Total(){
+  var result = 0;
     for(var i = 0; i < this.shoppingcartService.itemlist.length ; i++){
       result +=
         this.Oncacular(this.shoppingcartService.itemlist[i].price,this.shoppingcartService.itemlist[i].amount);
     }
-    return result*0.05;
-  }
-  Total(){
-  var result1 = 0;
-    for(var i = 0; i < this.shoppingcartService.itemlist.length ; i++){
-      result1 +=
-        this.Oncacular(this.shoppingcartService.itemlist[i].price,this.shoppingcartService.itemlist[i].amount);
-    }
-    return result1 + this.Sum();
+    return result + this.Sum();
   }
   Edit(item){
-    //this.shoppingcartService.Currentlog(this.item);
+    this.shoppingcartService.Currentlog(this.item);//進入編輯數量時，即紀錄進Log陣列
     item.isEdit=true;
     item.Qty2 = item.amount;
-}
-  Ok(item){
-    //this.shoppingcartService.Currentlog(this.item);
-    item.amount = item.Qty2;
+    }
+  Ok(item,i:number){
+    this.shoppingcartService.Currentlog(this.item);
+    //item.amount = item.Qty2;
+    this.shoppingcartService.itemlist[i] = new Product(this.shoppingcartService.itemlist[i].name,this.shoppingcartService.itemlist[i].price,item.Qty2);//每當更改數量送出時，new class存放新值
     item.isEdit = false;
+
 }
   Reset(item){
 
