@@ -11,7 +11,7 @@
 
 </form>
 <p>{{ item.name }} {{ item.price }} ^ {{ item.amount }} = $ {{ Oncacular(item.price,item.amount) }}</p>
-<button (click)="Onsubmit()">加入購物車</button>
+<button (click)="Onsubmit(item)">加入購物車</button>
 <ui>
 <app-shoppinglist></app-shoppinglist>
 </ui>

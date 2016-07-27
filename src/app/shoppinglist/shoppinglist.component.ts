@@ -1,5 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { ShoppingcartService } from '../shoppingcart.service';
+import { Product } from '../product';
 @Component({
   moduleId: module.id,
   selector: 'app-shoppinglist',
@@ -8,15 +9,15 @@ import { ShoppingcartService } from '../shoppingcart.service';
 })
 export class ShoppinglistComponent implements OnInit {
 
-  item;
+  private item: Product[] ;
   constructor(private shoppingcartService:ShoppingcartService = null) {}
 
   ngOnInit() {
   }
-  OnClear(){
+  OnClear(item){
+     this.shoppingcartService.Currentlog(this.item);
      this.shoppingcartService.itemlist= [ ];
-     this.shoppingcartService.Currentlog();
-  }
+       }
   Onback(){
     this.shoppingcartService.Undo();
   }
@@ -24,8 +25,8 @@ export class ShoppinglistComponent implements OnInit {
     return this.shoppingcartService.Caculate(price,amount);
   }
   Onmodify(index){
+    this.shoppingcartService.Currentlog(this.item);
     this.shoppingcartService.Modify(index);
-    this.shoppingcartService.Currentlog();
   }
   Sum(){
     var result = 0;
@@ -44,13 +45,14 @@ export class ShoppinglistComponent implements OnInit {
     return result1 + this.Sum();
   }
   Edit(item){
+    //this.shoppingcartService.Currentlog(this.item);
     item.isEdit=true;
     item.Qty2 = item.amount;
 }
   Ok(item){
+    //this.shoppingcartService.Currentlog(this.item);
     item.amount = item.Qty2;
     item.isEdit = false;
-    this.shoppingcartService.Currentlog();
 }
   Reset(item){
 
